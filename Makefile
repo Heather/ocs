@@ -75,10 +75,12 @@ clean:
 
 depend:
 	$(OCAMLDEP) *.ml *.mli > .depend
-	
+
 install:
 	$(MKDIR) $(DESTDIR)$(BINDIR)
 	$(INSTALL) ocscm$(EXE) $(DESTDIR)$(BINDIR)/
-	
+	$(MKDIR) $(DESTDIR)$(MODDIR)
+	$(INSTALL) ocs.a $(DESTDIR)$(MODDIR)/
+
 include .depend
 
