@@ -19,9 +19,9 @@ PREFIX    ?= /usr/local
 BINDIR    ?= $(PREFIX)/bin
 LIBDIR    ?= $(PREFIX)/lib
 SOLIBDIR  ?= $(PREFIX)/lib
-INCDIR    ?= $(PREFIX)/include/chibi
-MODDIR    ?= $(PREFIX)/share/chibi
-BINMODDIR ?= $(PREFIX)/lib/chibi
+INCDIR    ?= $(PREFIX)/include/ocs
+MODDIR    ?= $(PREFIX)/share/ocs
+BINMODDIR ?= $(PREFIX)/lib/ocs
 MANDIR    ?= $(PREFIX)/share/man/man1
 DESTDIR   ?=
 
