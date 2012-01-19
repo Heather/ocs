@@ -2,6 +2,29 @@
 # Build system for ocs library and interpreter
 #
 
+# install configuration
+CC        ?= cc
+CD        ?= cd
+RM        ?= rm -f
+LS        ?= ls
+INSTALL   ?= install
+MKDIR     ?= $(INSTALL) -d
+RMDIR     ?= rmdir
+TAR       ?= tar
+DIFF      ?= diff
+GREP      ?= grep
+FIND      ?= find
+SYMLINK   ?= ln -s
+PREFIX    ?= /usr/local
+BINDIR    ?= $(PREFIX)/bin
+LIBDIR    ?= $(PREFIX)/lib
+SOLIBDIR  ?= $(PREFIX)/lib
+INCDIR    ?= $(PREFIX)/include/chibi
+MODDIR    ?= $(PREFIX)/share/chibi
+BINMODDIR ?= $(PREFIX)/lib/chibi
+MANDIR    ?= $(PREFIX)/share/man/man1
+DESTDIR   ?=
+
 include Makefile.common
 
 BC_LIB = ocs.cma
@@ -55,7 +78,7 @@ depend:
 	
 install:
 	$(MKDIR) $(DESTDIR)$(BINDIR)
-	$(INSTALL) ocs$(EXE) $(DESTDIR)$(BINDIR)/
+	$(INSTALL) ocscm$(EXE) $(DESTDIR)$(BINDIR)/
 	
 include .depend
 
