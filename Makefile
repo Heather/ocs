@@ -31,6 +31,7 @@ BC_LIB = ocs.cma
 N_LIB = ocs.cmxa
 C_LIB = ocs.a
 INTERP = ocscm
+TEST = test
 
 BC_OBJS = ocs_error.cmo ocs_port.cmo ocs_vartable.cmo ocs_sym.cmo \
 	ocs_env.cmo ocs_char.cmo ocs_complex.cmo ocs_numaux.cmo \
@@ -47,6 +48,7 @@ N_OBJS = ocs_error.cmx ocs_sym.cmx ocs_vartable.cmx ocs_env.cmx \
 	ocs_vector.cmx ocs_wrap.cmx ocs_top.cmx
 
 INTERP_OBJS = ocs_main.cmx
+TEST_OBJS = test.cmx
 
 BCI_OBJS = ocs_main.cmo
 BCI = ocscm-bc
@@ -65,6 +67,9 @@ $(BC_LIB): $(BC_OBJS)
 
 $(INTERP): $(N_LIB) $(INTERP_OBJS)
 	$(OCAMLOPT) -o $(INTERP) nums.cmxa unix.cmxa $(N_LIB) $(INTERP_OBJS)
+
+$(TEST): $(N_LIB) $(TEST_OBJS)
+	$(OCAMLOPT) -o $(TEST) nums.cmxa unix.cmxa $(N_LIB) $(TEST_OBJS)
 
 $(BCI): $(BC_LIB) $(BCI_OBJS)
 	$(OCAMLC) $(OCAMLFLAGS) -o $(BCI) nums.cma unix.cma $(BC_LIB) $(BCI_OBJS)
