@@ -25,13 +25,12 @@ BINMODDIR ?= $(PREFIX)/lib/ocs
 MANDIR    ?= $(PREFIX)/share/man/man1
 DESTDIR   ?=
 
-include Makefile.common
+include ../Makefile.common
 
 BC_LIB = ocs.cma
 N_LIB = ocs.cmxa
 C_LIB = ocs.a
-INTERP = ocscm
-TEST = test
+OCSAKE = ocsake
 
 BC_OBJS = ocs_error.cmo ocs_port.cmo ocs_vartable.cmo ocs_sym.cmo \
 	ocs_env.cmo ocs_char.cmo ocs_complex.cmo ocs_numaux.cmo \
@@ -47,18 +46,24 @@ N_OBJS = ocs_error.cmx ocs_sym.cmx ocs_vartable.cmx ocs_env.cmx \
 	ocs_io.cmx ocs_list.cmx ocs_macro.cmx ocs_prim.cmx ocs_string.cmx \
 	ocs_vector.cmx ocs_wrap.cmx ocs_top.cmx
 
-INTERP_OBJS = ocs_main.cmx
-TEST_OBJS = test.cmx
+OCSAKE_OBJS = make.cmx
 
 BCI_OBJS = ocs_main.cmo
 BCI = ocscm-bc
 
 win: 
-	cp cygwin/*.a .
-	cp cygwin/*.o .
+	cp ../cygwin/*.a .
+	cp ../cygwin/*.o .
 	make all
 	
-all: $(BC_LIB) $(N_LIB) $(INTERP) $(TEST)
+all:
+	cp ../*.cmx .
+	cp ../*.cmi .
+	cp ../*.cmo .
+	cp ../*.o .
+	make build
+
+build: $(OCSAKE)
 
 native: $(N_LIB)
 
@@ -70,11 +75,8 @@ $(N_LIB): $(N_OBJS)
 $(BC_LIB): $(BC_OBJS)
 	$(OCAMLC) -a -o $(BC_LIB) $(BC_OBJS)
 
-$(INTERP): $(N_LIB) $(INTERP_OBJS)
-	$(OCAMLOPT) -o $(INTERP) nums.cmxa unix.cmxa $(N_LIB) $(INTERP_OBJS)
-
-$(TEST): $(N_LIB) $(TEST_OBJS)
-	$(OCAMLOPT) -o $(TEST) nums.cmxa unix.cmxa $(N_LIB) $(TEST_OBJS)
+$(OCSAKE): $(N_LIB) $(OCSAKE_OBJS)
+	$(OCAMLOPT) -o $(OCSAKE) nums.cmxa unix.cmxa $(N_LIB) $(OCSAKE_OBJS)
 
 $(BCI): $(BC_LIB) $(BCI_OBJS)
 	$(OCAMLC) $(OCAMLFLAGS) -o $(BCI) nums.cma unix.cma $(BC_LIB) $(BCI_OBJS)
@@ -84,13 +86,7 @@ clean:
 	-rm -f $(BCI)
 
 depend:
-	$(OCAMLDEP) *.ml *.mli > .depend
+	$(OCAMLDEP) *.ml *.mli > ../.depend
 
-install:
-	$(MKDIR) $(DESTDIR)$(BINDIR)
-	$(INSTALL) ocscm$(EXE) $(DESTDIR)$(BINDIR)/
-	$(MKDIR) $(DESTDIR)$(MODDIR)
-	$(INSTALL) ocs.a $(DESTDIR)$(MODDIR)/
-
-include .depend
+include ../.depend
 
