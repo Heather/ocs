@@ -1,5 +1,12 @@
 *.a
 *.o
+!cygwin/*.a
+!cygwin/*.o
+cygwin/*.ml
+cygwin/*.mli
+cygwin/*.scm
+cygwin/Makefile
+cygwin/Makefile.common
 *.cma
 *.cmi
 *.cmo
