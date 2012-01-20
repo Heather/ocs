@@ -75,7 +75,7 @@ $(BCI): $(BC_LIB) $(BCI_OBJS)
 	$(OCAMLC) $(OCAMLFLAGS) -o $(BCI) nums.cma unix.cma $(BC_LIB) $(BCI_OBJS)
 
 clean:
-	-rm -f $(N_LIB) $(BC_LIB) $(C_LIB) $(INTERP) *.cm* *.o
+	-rm -f $(N_LIB) $(BC_LIB) $(C_LIB) $(INTERP) $(TEST) *.cm* *.o
 	-rm -f $(BCI)
 
 depend:
