@@ -1,1 +1,2 @@
-(system "make win")
+(system "dir");
+(system "pause")
