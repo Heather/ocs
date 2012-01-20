@@ -5,6 +5,7 @@
 cygwin/*.ml
 cygwin/*.mli
 cygwin/*.scm
+cygwin/.depend
 cygwin/Makefile
 cygwin/Makefile.common
 *.cma
