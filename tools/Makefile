@@ -76,7 +76,7 @@ $(BC_LIB): $(BC_OBJS)
 	$(OCAMLC) -a -o $(BC_LIB) $(BC_OBJS)
 
 $(OCSAKE): $(N_LIB) $(OCSAKE_OBJS)
-	$(OCAMLOPT) -o $(OCSAKE) nums.cmxa unix.cmxa $(N_LIB) $(OCSAKE_OBJS)
+	$(OCAMLOPT) -o ../$(OCSAKE) nums.cmxa unix.cmxa $(N_LIB) $(OCSAKE_OBJS)
 
 $(BCI): $(BC_LIB) $(BCI_OBJS)
 	$(OCAMLC) $(OCAMLFLAGS) -o $(BCI) nums.cma unix.cma $(BC_LIB) $(BCI_OBJS)

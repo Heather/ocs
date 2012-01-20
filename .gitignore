@@ -7,4 +7,5 @@
 *.cmo
 *.cmx
 *.cmxa
+*.exe
 ocscm
