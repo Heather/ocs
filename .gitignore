@@ -1,7 +1,8 @@
 *.a
 *.o
 !cygwin/*.a
-!cygwin/*.o
+cygwin/ocs.a
+!cygwin/crt2.o
 cygwin/*.ml
 cygwin/*.mli
 cygwin/*.scm
