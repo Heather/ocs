@@ -1,2 +1,2 @@
-(system "dir");
+(system "make");
 (system "pause")

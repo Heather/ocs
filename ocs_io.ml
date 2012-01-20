@@ -98,16 +98,20 @@ let syscall ?(env=[| |]) cmd =
 	with End_of_file -> ());
 	let exit_status = Unix.close_process_full (ic, oc, ec) in
 	check_exit_status exit_status;
-	Buffer.contents buf1
-	(*Buffer.contents buf2*)
+	(Buffer.contents buf1,
+	Buffer.contents buf2)
 ;;
 
 let system th cc =
   function
     [| Sstring s |] -> 
-		let obj = Sstring (syscall s)
-		in let p = get_stdout th
-		in print p true obj; Ocs_port.flush p; cc Sunspec
+		let obj = syscall s in 
+		let obj1 = Sstring (fst obj) in
+		let obj2 = Sstring (snd obj) in
+		let p = get_stdout th
+		in 
+		print p true obj2; Ocs_port.flush p; cc Sunspec;
+		print p true obj1; Ocs_port.flush p; cc Sunspec
   | _ -> raise (Error "system: bad args")
 ;;
 
