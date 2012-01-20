@@ -98,8 +98,8 @@ let syscall ?(env=[| |]) cmd =
 	with End_of_file -> ());
 	let exit_status = Unix.close_process_full (ic, oc, ec) in
 	check_exit_status exit_status;
-	(*Buffer.contents buf1*)
-	Buffer.contents buf2
+	Buffer.contents buf1
+	(*Buffer.contents buf2*)
 ;;
 
 let system th cc =
