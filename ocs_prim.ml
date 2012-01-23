@@ -78,6 +78,11 @@ let symbol_to_string =
   | _ -> raise (Error "symbol->string: not a symbol")
 ;;
 
+let system_type() =
+	let os_type = Sys.os_type in
+	Sstring os_type
+;;
+
 let string_to_symbol =
   function
     Sstring s -> get_symbol (String.copy s)
@@ -265,5 +270,7 @@ let init e =
   set_pf1 e (report_env (env_copy e)) "scheme-report-environment";
   set_pf1 e null_env "null-environment";
   set_pf0 e (interact_env e) "interaction-environment";
+  
+  set_pf0 e system_type "system-type";
 ;;
 

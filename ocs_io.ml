@@ -139,18 +139,6 @@ let newline th cc =
   | _ -> raise (Error "newline: bad args")
 ;;
 
-let systemtype th cc =
-  function
-    [| |] ->
-      let os_type = (Sys.os_type) in
-      let p = get_stdout th in 
-	  Ocs_port.puts p os_type; Ocs_port.flush p; cc Sunspec
-  | [| Sport p |] -> 
-	let os_type = (Sys.os_type) in
-	Ocs_port.puts p os_type; Ocs_port.flush p; cc Sunspec
-  | _ -> raise (Error "newline: bad args")
-;;
-
 let current_input th cc =
   function
     [| |] -> cc th.th_stdin
@@ -249,7 +237,6 @@ let init e =
 
   set_pfcn e display "display";
   set_pfcn e system "system";
-  set_pfcn e systemtype "system-type";
   
   set_pfcn e newline "newline";
   set_pfcn e write "write";

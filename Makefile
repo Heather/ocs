@@ -80,7 +80,7 @@ $(BCI): $(BC_LIB) $(BCI_OBJS)
 	$(OCAMLC) $(OCAMLFLAGS) -o $(BCI) nums.cma unix.cma $(BC_LIB) $(BCI_OBJS)
 
 clean:
-	-rm -f $(N_LIB) $(BC_LIB) $(C_LIB) $(INTERP) $(TEST) *.cm* *.o *.a *.exe
+	-rm -f $(N_LIB) $(BC_LIB) $(C_LIB) $(INTERP) $(TEST) *.cm* *.o *.a "*.exe !ocsake.exe"
 	-rm -f $(BCI)
 
 depend:

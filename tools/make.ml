@@ -11,12 +11,12 @@ let _ =
   let thread = Ocs_top.make_thread () in
   let handler v = print_sval v in
   let code =
-    let sval = (Ocs_read.read_from_string "
-		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-		(system \"make\")
-		(system \"pause\")
-		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-		") in
+    let sval = (Ocs_read.read_from_string ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(cond	[(string=? (system-type) \"Win32\")
+			(display \"Sorry but no build for windows is supported yet\")
+			(system \"pause\")]
+		[else (system \"make\")])
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;") in
 	let env = Ocs_top.make_env () in
     Ocs_compile.compile env sval
   in
