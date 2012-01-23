@@ -8,7 +8,6 @@ let print_sval v =
   Ocs_port.flush port;
   print_endline "\n"
 let _ =
-  let env = Ocs_top.make_env () in
   let thread = Ocs_top.make_thread () in
   let handler v = print_sval v in
   let code =
@@ -18,8 +17,7 @@ let _ =
 		(system \"pause\")
 		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 		") in
-    print_endline "create-dynmic-code:";
-    print_sval sval;
+	let env = Ocs_top.make_env () in
     Ocs_compile.compile env sval
   in
   print_endline "Runing make...";
