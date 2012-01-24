@@ -1,5 +1,4 @@
 (* Utility type for variable binding tables.  *)
-
 module VarTable = Map.Make (String)
 
 type 'a vartable = {

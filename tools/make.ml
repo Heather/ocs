@@ -13,9 +13,13 @@ let _ =
   let code =
     let sval = (Ocs_read.read_from_string ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (cond	[(string=? (system-type) \"Win32\")
-			(display \"Sorry but no build for windows is supported yet\")
+			(display \"Sorry but no build for windows is supported yet \\n\")
+      (display \"Just use MinGW make to build it with cygwin\\n\")
+      (display \"Run make win\\n\")
 			(system \"pause\")]
-		[else (system \"make\")])
+		[else 
+      (display \"compiling...\\n\")
+      (system \"make\")])
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;") in
 	let env = Ocs_top.make_env () in
     Ocs_compile.compile env sval

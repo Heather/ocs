@@ -1,5 +1,4 @@
 (* Character primitives *)
-
 open Ocs_types
 open Ocs_error
 open Ocs_env

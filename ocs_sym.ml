@@ -1,11 +1,9 @@
 (* Symbol table implementation.  *)
-
 open Ocs_types
 open Ocs_error
 
 (* Symbols are stored in a hash table of weak references.  This
    guarantees that they are unique, but they needn't be permanent.  *)
-
 module HashSymbol =
   struct
     type t = sval

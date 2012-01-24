@@ -1,5 +1,4 @@
 (* Implement functions missing from Complex.  *)
-
 open Complex
 
 let sin_cplx z =
@@ -17,7 +16,6 @@ let tan_cplx z =
 ;;
 
 (* asin z = -i Ln (iz + sqrt (1 - z^2)) *)
-
 let asin_cplx =
   function { re = x; im = y } ->
     let t = sqrt { re = 1.0 +. y *. y -. x *. x; im = -2.0 *. x *. y } in
@@ -26,14 +24,12 @@ let asin_cplx =
 ;;
 
 (* acos z = pi/2 - asin z *)
-
 let acos_cplx z =
   match asin_cplx z with
     { re = x; im = y } -> { re = 1.57079632679489661923 -. x; im = -.y }
 ;;
 
 (* atan z = [Ln (1 + iz) - Ln (1 - iz)] / 2i *)
-
 let atan_cplx =
   function { re = x; im = y } ->
     let t1 = log { re = 1.0 -. y; im = x }
