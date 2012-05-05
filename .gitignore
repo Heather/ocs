@@ -1,0 +1,14 @@
+*.a
+*.o
+!cygwin/*.a
+!cygwin/crt2.o
+*.cma
+*.cmi
+*.cmo
+*.cmx
+*.cmxa
+*.exe
+!ocsake.exe
+!ocsake
+ocscm
+test
