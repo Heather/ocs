@@ -1,4 +1,0 @@
-ocs
-===
-
-OCamL scheme implementation
