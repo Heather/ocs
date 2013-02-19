@@ -57,13 +57,13 @@ win:
 	cp cygwin/*.a .
 	cp cygwin/*.o .
 	make all
-	
+
 all: $(BC_LIB) $(N_LIB) $(INTERP) $(TEST)
 
 native: $(N_LIB)
 
 bytecode: $(BC_LIB)
-	
+
 $(N_LIB): $(N_OBJS)
 	$(OCAMLOPT) -a -o $(N_LIB) $(N_OBJS)
 

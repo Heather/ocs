@@ -13,7 +13,7 @@ let _ =
   let code =
     let sval = (Ocs_read.read_from_string ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (cond	[(string=? (system-type) \"Win32\")
-			(display \"Sorry but no build for windows is supported yet \\n\")
+			(display \"Sorry but no build for windows is NOT supported yet \\n\")
       (display \"Just use MinGW make to build it with cygwin\\n\")
       (display \"Run make win\\n\")
 			(system \"pause\")]
