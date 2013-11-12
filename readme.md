@@ -1,6 +1,8 @@
 General
 =======
 
+[![Build Status](https://travis-ci.org/Heather/ocs.png?branch=master)](https://travis-ci.org/Heather/ocs)
+
 Ocs is an implementation of Scheme, as defined by R5RS.  It is
 written entirely in OCaml and can be trivially embedded in any
 OCaml program.
