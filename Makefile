@@ -53,11 +53,6 @@ TEST_OBJS = test.cmx
 BCI_OBJS = ocs_main.cmo
 BCI = ocscm-bc
 
-win: 
-	cp cygwin/*.a .
-	cp cygwin/*.o .
-	make all
-
 all: $(BC_LIB) $(N_LIB) $(INTERP) $(TEST)
 
 native: $(N_LIB)
